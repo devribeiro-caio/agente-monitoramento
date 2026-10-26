@@ -1,0 +1,11 @@
+const router = require('express').Router();
+const { adminAuth } = require('../middleware/auth');
+const controller = require('../controllers/adminController');
+router.use(adminAuth);
+router.get('/employees', controller.listEmployees);
+router.post('/employees', controller.createEmployee);
+router.post('/employees/:id/enroll-code', controller.generateEnrollmentCode);
+router.delete('/devices/:id', controller.revokeDevice);
+router.put('/categories', controller.saveCategory);
+router.get('/reports/employee/:id', controller.employeeReport);
+module.exports = router;
